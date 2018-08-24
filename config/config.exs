@@ -16,6 +16,9 @@ config :deckhub, DeckhubWeb.Endpoint,
   render_errors: [view: DeckhubWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Deckhub.PubSub, adapter: Phoenix.PubSub.PG2]
 
+# Configure Phoenix Generators
+config :phoenix, :generators, binary_id: true
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

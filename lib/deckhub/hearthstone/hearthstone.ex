@@ -1,6 +1,6 @@
 defmodule Deckhub.Hearthstone do
   @moduledoc """
-  The Hearthstone context.
+  Context for dealing with all Hearthstone information such as cards, card backs, and heroes.
   """
 
   import Ecto.Query, warn: false
@@ -13,8 +13,10 @@ defmodule Deckhub.Hearthstone do
 
   ## Examples
 
-      iex> list_cards()
-      [%Card{}, ...]
+  ```
+  iex> list_cards()
+  [%Card{}, ...]
+  ```
 
   """
   def list_cards do
@@ -28,12 +30,13 @@ defmodule Deckhub.Hearthstone do
 
   ## Examples
 
-      iex> get_card!(123)
-      %Card{}
+  ```
+  iex> get_card!("abomination")
+  %Card{}
 
-      iex> get_card!(456)
-      ** (Ecto.NoResultsError)
-
+  iex> get_card!("not-a-card")
+  ** (Ecto.NoResultsError)
+  ```
   """
   def get_card!(id), do: Repo.get!(Card, id)
 
@@ -42,12 +45,13 @@ defmodule Deckhub.Hearthstone do
 
   ## Examples
 
-      iex> create_card(%{field: value})
-      {:ok, %Card{}}
+  ```
+  iex> create_card(%{field: value})
+  {:ok, %Card{}}
 
-      iex> create_card(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
+  iex> create_card(%{field: bad_value})
+  {:error, %Ecto.Changeset{}}
+  ```
   """
   def create_card(attrs \\ %{}) do
     %Card{}
@@ -60,12 +64,13 @@ defmodule Deckhub.Hearthstone do
 
   ## Examples
 
-      iex> update_card(card, %{field: new_value})
-      {:ok, %Card{}}
+  ```
+  iex> update_card(card, %{field: new_value})
+  {:ok, %Card{}}
 
-      iex> update_card(card, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
+  iex> update_card(card, %{field: bad_value})
+  {:error, %Ecto.Changeset{}}
+  ```
   """
   def update_card(%Card{} = card, attrs) do
     card
@@ -78,12 +83,13 @@ defmodule Deckhub.Hearthstone do
 
   ## Examples
 
-      iex> delete_card(card)
-      {:ok, %Card{}}
+  ```
+  iex> delete_card(card)
+  {:ok, %Card{}}
 
-      iex> delete_card(card)
-      {:error, %Ecto.Changeset{}}
-
+  iex> delete_card(card)
+  {:error, %Ecto.Changeset{}}
+  ```
   """
   def delete_card(%Card{} = card) do
     Repo.delete(card)
@@ -94,9 +100,10 @@ defmodule Deckhub.Hearthstone do
 
   ## Examples
 
-      iex> change_card(card)
-      %Ecto.Changeset{source: %Card{}}
-
+  ```
+  iex> change_card(card)
+  %Ecto.Changeset{source: %Card{}}
+  ```
   """
   def change_card(%Card{} = card) do
     Card.changeset(card, %{})

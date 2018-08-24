@@ -14,8 +14,7 @@ config :deckhub, DeckhubWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "9im+Hfh6n9ilPM79rk9tQxQX4AEYrjRwqH3U5aLtLEUxZO1+6WHbX+LOjNDqsCiP",
   render_errors: [view: DeckhubWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Deckhub.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Deckhub.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +23,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

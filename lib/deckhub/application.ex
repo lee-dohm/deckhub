@@ -11,7 +11,7 @@ defmodule Deckhub.Application do
       # Start the Ecto repository
       supervisor(Deckhub.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(DeckhubWeb.Endpoint, []),
+      supervisor(DeckhubWeb.Endpoint, [])
       # Start your own worker by calling: Deckhub.Worker.start_link(arg1, arg2, arg3)
       # worker(Deckhub.Worker, [arg1, arg2, arg3]),
     ]

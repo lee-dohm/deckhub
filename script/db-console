@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# script/db-console: Connects to the local development database console.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+psql -d atom_tweaks_dev -U postgres

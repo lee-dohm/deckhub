@@ -10,7 +10,8 @@ defmodule Deckhub.Mixfile do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -35,6 +36,7 @@ defmodule Deckhub.Mixfile do
   defp deps do
     [
       # Dependencies
+      {:cmark, "~> 0.7"},
       {:cowboy, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:phoenix_ecto, "~> 3.2"},
@@ -44,10 +46,10 @@ defmodule Deckhub.Mixfile do
       {:postgrex, ">= 0.0.0"},
 
       # Development dependencies
-      {:credo, "~> 0.10.0", only: [:dev, :test]}
+      {:credo, "~> 0.10.0", only: [:dev, :test]},
       {:dotenv, "~> 3.0.0", only: :dev},
       {:ex_doc, "~> 0.16", only: [:dev, :test], runtime: false},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_live_reload, "~> 1.0", only: :dev}
     ]
   end
 

@@ -71,7 +71,7 @@ defmodule Deckhub.Mixfile do
       groups_for_modules: [
         Test: [
           ~r{^Support}
-        ],
+        ]
       ]
     ]
   end

@@ -1,4 +1,8 @@
 defmodule Deckhub.Application do
+  @moduledoc """
+  Application definition for the Deckhub web application.
+  """
+
   use Application
 
   # See https://hexdocs.pm/elixir/Application.html

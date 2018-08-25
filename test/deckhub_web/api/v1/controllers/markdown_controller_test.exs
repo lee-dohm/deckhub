@@ -1,4 +1,4 @@
-defmodule DeckhubWeb.MarkdownControllerTest do
+defmodule DeckhubWeb.Api.V1.MarkdownControllerTest do
   use DeckhubWeb.ConnCase
 
   test "renders the markdown requested", context do

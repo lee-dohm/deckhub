@@ -10,8 +10,11 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Deckhub.Repo.insert!(
-  %Deckhub.Hearthstone.Card{
+alias Deckhub.Repo
+alias Deckhub.Hearthstone
+
+Repo.insert!(
+  %Hearthstone.Card{
     artist: "Alex Horley Orlandelli",
     attack: 4,
     character_class: "neutral",

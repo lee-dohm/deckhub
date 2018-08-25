@@ -4,6 +4,8 @@ defmodule DeckhubApi.SlackController do
   """
   use DeckhubApi, :controller
 
+  alias Deckhub.Hearthstone
+
   defmodule BadRequestError do
     defexception plug_status: 400, message: "Bad request"
   end
@@ -24,15 +26,40 @@ defmodule DeckhubApi.SlackController do
   Composes the [Slack message](https://api.slack.com/docs/messages#composing_messages) for the
   parsed command.
   """
-  def compose_message(unrecognized_command: command_text) do
+  def compose_message(card: name) do
+    name
+    |> Deckhub.to_slug()
+    |> Hearthstone.get_card!()
+    |> to_message()
+  end
+
+  def to_message(unrecognized_command: command_text) do
     %{
-      text: "\"#{command_text}\" is not a valid command"
+      text: "\"#{command_text}\" is not a valid Deckhub command"
+    }
+  end
+
+  def to_message(%Hearthstone.Card{} = card) do
+    %{
+      attachments: [
+        %{
+          fallback: "*Card:* #{card.name}",
+          author_name: "Deckhub",
+          author_link: "https://deckhub.org",
+          title: card.name,
+          title_link: "https://deckhub.org/cards/#{card.slug}",
+          text: card.extra_text,
+          ts: get_timestamp()
+        }
+      ]
     }
   end
 
   @doc """
   Parses the command from the incoming parameters.
   """
+  def parse_command(%{"text" => "card " <> name}), do: [card: name]
+
   def parse_command(%{"command" => command, "text" => text}) do
     [unrecognized_command: "#{command} #{text}"]
   end
@@ -41,5 +68,7 @@ defmodule DeckhubApi.SlackController do
     raise DeckhubApi.SlackController.BadRequestError
   end
 
-  # def parse_command(%{"text" => "card " <> name}), do: [card: name]
+  defp get_timestamp do
+    DateTime.to_unix(DateTime.utc_now())
+  end
 end

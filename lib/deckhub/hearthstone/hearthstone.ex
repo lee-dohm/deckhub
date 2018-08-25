@@ -38,7 +38,7 @@ defmodule Deckhub.Hearthstone do
   ** (Ecto.NoResultsError)
   ```
   """
-  def get_card!(id), do: Repo.get!(Card, id)
+  def get_card!(slug) when is_binary(slug), do: Repo.get_by!(Card, slug: slug)
 
   @doc """
   Creates a card.

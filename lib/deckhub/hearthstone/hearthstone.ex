@@ -1,6 +1,6 @@
 defmodule Deckhub.Hearthstone do
   @moduledoc """
-  Context for dealing with all Hearthstone information such as cards, card backs, and heroes.
+  Context for dealing with all Hearthstone game data such as cards, card backs, and heroes.
   """
 
   import Ecto.Query, warn: false

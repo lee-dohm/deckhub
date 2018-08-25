@@ -22,8 +22,8 @@ defmodule DeckhubWeb.Router do
 
   # Other scopes may use custom stacks.
   scope "/api/v1", DeckhubWeb.Api.V1 do
-    pipe_through :api
+    pipe_through(:api)
 
-    get("/markdown", MarkdownController, :render)
+    get("/markdown", MarkdownController, :render_markdown)
   end
 end

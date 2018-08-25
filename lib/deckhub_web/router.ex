@@ -28,5 +28,7 @@ defmodule DeckhubWeb.Router do
     resources "/cards", CardController, only: [:index, :show]
 
     get("/markdown", MarkdownController, :render_markdown)
+
+    post("/slack", SlackController, :slash_command)
   end
 end

@@ -27,7 +27,6 @@ defmodule DeckhubWeb.Api.V1.MarkdownController do
     "html": "<p>Testing… 1… 2… 3…</p>"
   }
   ```
-
   """
   def render_markdown(conn, %{"text" => text}) do
     render(conn, "render_markdown.json", html: MarkdownEngine.render(text))

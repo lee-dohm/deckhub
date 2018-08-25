@@ -62,3 +62,5 @@ config :deckhub, Deckhub.Repo,
   database: "deckhub_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :ex_doc, :markdown_processor, ExDoc.Markdown.Cmark

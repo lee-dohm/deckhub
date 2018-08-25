@@ -17,3 +17,5 @@ config :deckhub, Deckhub.Repo,
   database: "deckhub_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :ex_doc, :markdown_processor, ExDoc.Markdown.Cmark

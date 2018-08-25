@@ -1,4 +1,7 @@
 defmodule DeckhubWeb.Router do
+  @moduledoc """
+  Defines mappings from web routes to controllers and their functions.
+  """
   use DeckhubWeb, :router
 
   pipeline :browser do
@@ -14,13 +17,11 @@ defmodule DeckhubWeb.Router do
   end
 
   scope "/", DeckhubWeb do
-    # Use the default browser stack
     pipe_through(:browser)
 
     get("/", PageController, :index)
   end
 
-  # Other scopes may use custom stacks.
   scope "/api/v1", DeckhubWeb.Api.V1 do
     pipe_through(:api)
 

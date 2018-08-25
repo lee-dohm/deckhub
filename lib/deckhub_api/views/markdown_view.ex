@@ -1,8 +1,8 @@
-defmodule DeckhubWeb.Api.V1.MarkdownView do
+defmodule DeckhubApi.MarkdownView do
   @moduledoc """
   View functions for returning Markdown via the API.
   """
-  use DeckhubWeb, :view
+  use DeckhubApi, :view
 
   def render("render_markdown.json", %{html: html}), do: %{html: html}
 end

@@ -1,9 +1,9 @@
-defmodule DeckhubWeb.Api.V1.MarkdownController do
+defmodule DeckhubApi.MarkdownController do
   @moduledoc """
   Handles requests to render Markdown.
   """
 
-  use DeckhubWeb, :controller
+  use DeckhubApi, :controller
 
   alias Deckhub.MarkdownEngine
 

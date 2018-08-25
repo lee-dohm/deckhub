@@ -22,7 +22,7 @@ defmodule DeckhubWeb.Router do
     get("/", PageController, :index)
   end
 
-  scope "/api/v1", DeckhubWeb.Api.V1 do
+  scope "/api", DeckhubApi do
     pipe_through(:api)
 
     get("/markdown", MarkdownController, :render_markdown)

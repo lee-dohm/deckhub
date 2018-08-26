@@ -23,8 +23,8 @@ defmodule Deckhub.Text do
 
   def to_slackmark(text) do
     text
-    |> String.replace(~r{<b>(.+?)</b>}, "*\\1*")
-    |> String.replace(~r{<i>(.+?)</i>}, "_\\1_")
+    |> String.replace(~r{<b>(.+?)</b>}, "\\1")
+    |> String.replace(~r{<i>(.+?)</i>}, "\\1")
     |> String.replace(~r{^\[x\]}, "", global: false)
     |> String.replace(~r{\n}, " ")
   end

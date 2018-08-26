@@ -59,7 +59,7 @@ defmodule DeckhubApi.SlackController do
     %{
       attachments: [
         %{
-          fallback: "*Card:* #{card.name}",
+          fallback: "Hearthstone card: #{card.name}",
           author_name: "Deckhub",
           author_link: page_url(conn, :index),
           color: Card.rarity_color(card),

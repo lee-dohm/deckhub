@@ -8,6 +8,11 @@
 # Dotenv script
 /.env
 
+# Data files
+/priv/repo/*.json
+/priv/repo/cards.exs
+/priv/repo/strings.exs
+
 # Generated on crash by the VM
 erl_crash.dump
 

@@ -49,6 +49,7 @@ defmodule Deckhub.Mixfile do
       {:credo, "~> 0.10.0", only: [:dev, :test]},
       {:dotenv, "~> 3.0.0", only: :dev},
       {:ex_doc, "~> 0.16", only: [:dev, :test], runtime: false},
+      {:httpoison, "~> 1.2", only: :dev},
       {:phoenix_live_reload, "~> 1.0", only: :dev}
     ]
   end

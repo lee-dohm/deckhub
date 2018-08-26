@@ -5,6 +5,7 @@ defmodule DeckhubApi.SlackController do
   use DeckhubApi, :controller
 
   alias Deckhub.Hearthstone
+  alias Deckhub.Text
 
   defmodule BadRequestError do
     defexception plug_status: 400, message: "Bad request"
@@ -28,7 +29,7 @@ defmodule DeckhubApi.SlackController do
   """
   def compose_message(card: name) do
     name
-    |> Deckhub.to_slug()
+    |> Text.to_slug()
     |> Hearthstone.get_card!()
     |> to_message()
   end

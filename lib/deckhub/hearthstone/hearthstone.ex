@@ -4,8 +4,8 @@ defmodule Deckhub.Hearthstone do
   """
 
   import Ecto.Query, warn: false
-  alias Deckhub.Repo
 
+  alias Deckhub.Repo
   alias Deckhub.Hearthstone.Card
 
   @doc """

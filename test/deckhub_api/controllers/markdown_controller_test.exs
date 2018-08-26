@@ -3,7 +3,8 @@ defmodule DeckhubApi.MarkdownControllerTest do
 
   test "renders the markdown requested", context do
     markdown = "Testing... 1... 2... 3..."
-    conn = get(context.conn, markdown_path(context.conn, :render_markdown, %{"text" => markdown}))
+    path = api_markdown_path(context.conn, :render_markdown, %{"text" => markdown})
+    conn = get(context.conn, path)
 
     assert json_response(conn, :ok) == %{"html" => "<p>Testing… 1… 2… 3…</p>\n"}
   end

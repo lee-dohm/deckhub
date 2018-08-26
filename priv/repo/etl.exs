@@ -54,15 +54,38 @@ defmodule Deckhub.ETL do
     Poison.decode!(response.body)
   end
 
+  defp rename_card_id(cards) do
+    Enum.map(cards, fn(card) -> rename_key(card, "id", "card_id") end)
+  end
+
+  # In the case where the old and new key are the same, don't do anything
+  defp rename_key(map, key, key), do: map
+
+  defp rename_key(map, old_key, new_key) do
+    map
+    |> Map.put(new_key, map[old_key])
+    |> Map.delete(old_key)
+  end
+
   defp transform_cards(cards) do
     cards
     |> add_image_attribute()
+    |> rename_card_id()
+    |> underscore_keys()
     |> write!(base_path("cards"), ".exs")
   end
 
   defp transform_strings(strings) do
     strings
     |> write!(base_path("strings"), ".exs")
+  end
+
+  defp underscore_keys(maps) do
+    Enum.map(maps, fn(map) ->
+      Enum.reduce(Map.keys(map), map, fn(key, m) ->
+        rename_key(m, key, Macro.underscore(key))
+      end)
+    end)
   end
 
   defp write!(content, path, ext) when is_map(content) or is_list(content) do

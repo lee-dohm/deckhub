@@ -21,13 +21,13 @@ defmodule DeckhubWeb.Router do
 
     get("/", PageController, :index)
 
-    resources "/cards", CardController, only: [:index, :show], param: "slug"
+    resources("/cards", CardController, only: [:index, :show], param: "slug")
   end
 
   scope "/api", DeckhubApi, as: :api do
     pipe_through(:api)
 
-    resources "/cards", CardController, only: [:index, :show], param: "slug"
+    resources("/cards", CardController, only: [:index, :show], param: "slug")
 
     get("/markdown", MarkdownController, :render_markdown)
 

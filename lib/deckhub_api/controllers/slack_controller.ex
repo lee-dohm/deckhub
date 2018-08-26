@@ -48,6 +48,7 @@ defmodule DeckhubApi.SlackController do
           author_name: "Deckhub",
           author_link: page_url(conn, :index),
           image_url: card.image,
+          mrkdwn_in: ["text"],
           title: card.name,
           title_link: card_url(conn, :show, card),
           text: Text.to_slackmark(card.text),

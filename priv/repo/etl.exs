@@ -12,6 +12,8 @@ defmodule Deckhub.ETL do
   end
 
   def run(options) do
+    extract_version()
+
     "https://api.hearthstonejson.com/v1/strings/enUS/GLOBAL.json"
     |> extract("strings", options)
     |> transform_strings()
@@ -52,6 +54,19 @@ defmodule Deckhub.ETL do
     write!(response.body, base_path(basename), ".json")
 
     Poison.decode!(response.body)
+  end
+
+  defp extract_version do
+    IO.puts("==> GET https://api.hearthstonejson.com/v1/latest/")
+    {:ok, %HTTPoison.Response{status_code: 302} = response} =
+      HTTPoison.get("https://api.hearthstonejson.com/v1/latest/", @headers)
+
+    [{"Location", location}] =
+      Enum.filter(response.headers, fn({key, _value}) -> key == "Location" end)
+
+    version = String.replace(location, ~r{https://api.hearthstonejson.com/v1/(\d+)/}, "\\1")
+
+    write!(version, base_path("version"), ".exs")
   end
 
   defp rename_card_id(cards) do

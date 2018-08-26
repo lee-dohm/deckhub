@@ -12,6 +12,7 @@
 /priv/repo/*.json
 /priv/repo/cards.exs
 /priv/repo/strings.exs
+/priv/repo/version.exs
 
 # Generated on crash by the VM
 erl_crash.dump

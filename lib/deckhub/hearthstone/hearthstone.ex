@@ -24,9 +24,26 @@ defmodule Deckhub.Hearthstone do
   end
 
   @doc """
-  Gets a single card.
+  Gets a single card by its `card_id`.
 
   Raises `Ecto.NoResultsError` if the Card does not exist.
+
+  ## Examples
+
+  ```
+  iex> get_card!("CARD_01")
+  %Card{}
+
+  iex> get_card!("not-a-card")
+  ** (Ecto.NoResultsError)
+  ```
+  """
+  def get_card!(card_id), do: Repo.get_by!(Card, card_id: card_id)
+
+  @doc """
+  Gets a single card by its `slug_name`.
+
+  Raises `Ecto.NoResultsError` if the Card doees not exist.
 
   ## Examples
 
@@ -38,7 +55,7 @@ defmodule Deckhub.Hearthstone do
   ** (Ecto.NoResultsError)
   ```
   """
-  def get_card!(slug) when is_binary(slug), do: Repo.get_by!(Card, slug_name: slug)
+  def get_card_by_slug_name!(slug_name), do: Repo.get_by!(Card, slug_name: slug_name)
 
   @doc """
   Creates a card.

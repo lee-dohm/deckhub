@@ -91,26 +91,31 @@ defmodule Deckhub.HearthstoneTest do
 
     test "get_card!/1 returns the card with given id" do
       card = card_fixture()
-      assert Hearthstone.get_card!(card.id) == card
+      assert Hearthstone.get_card!(card.card_id) == card
     end
 
     test "create_card/1 with valid data creates a card" do
       assert {:ok, %Card{} = card} = Hearthstone.create_card(@valid_attrs)
+      assert card.armor == 42
       assert card.artist == "some artist"
       assert card.attack == 42
-      assert card.character_class == "some character_class"
+      assert card.card_class == "some card_class"
+      assert card.card_id == "CARD_01"
       assert card.collectible == true
+      assert card.cost == 42
+      assert card.dbf_id == 42
       assert card.durability == 42
-      assert card.extra_text == "some extra_text"
-      assert card.flavor_text == "some flavor_text"
+      assert card.elite == false
+      assert card.flavor == "some flavor"
       assert card.health == 42
-      assert card.mana == 42
-      assert card.minion_class == "some minion_class"
+      assert card.image == "some image"
       assert card.name == "some name"
-      assert card.quality == "some quality"
-      assert card.set == "some set"
-      assert card.type == "some type"
-      assert card.slug == "some-name"
+      assert card.race == "MURLOC"
+      assert card.rarity == "COMMON"
+      assert card.set == "CORE"
+      assert card.slug_name == "some-name"
+      assert card.text == "some text"
+      assert card.type == "MINION"
     end
 
     test "create_card/1 with invalid data returns error changeset" do
@@ -121,33 +126,38 @@ defmodule Deckhub.HearthstoneTest do
       card = card_fixture()
       assert {:ok, card} = Hearthstone.update_card(card, @update_attrs)
       assert %Card{} = card
+      assert card.armor == 43
       assert card.artist == "some updated artist"
       assert card.attack == 43
-      assert card.character_class == "some updated character_class"
-      assert card.collectible == false
+      assert card.card_class == "some updated card_class"
+      assert card.card_id == "CARD_01"
+      assert card.collectible == true
+      assert card.cost == 43
+      assert card.dbf_id == 43
       assert card.durability == 43
-      assert card.extra_text == "some updated extra_text"
-      assert card.flavor_text == "some updated flavor_text"
+      assert card.elite == false
+      assert card.flavor == "some updated flavor"
       assert card.health == 43
-      assert card.mana == 43
-      assert card.minion_class == "some updated minion_class"
+      assert card.image == "some updated image"
       assert card.name == "some updated name"
-      assert card.quality == "some updated quality"
-      assert card.set == "some updated set"
-      assert card.type == "some updated type"
-      assert card.slug == "some-updated-name"
+      assert card.race == "PIRATE"
+      assert card.rarity == "RARE"
+      assert card.set == "BOOMSDAY"
+      assert card.slug_name == "some-updated-name"
+      assert card.text == "some updated text"
+      assert card.type == "SPELL"
     end
 
     test "update_card/2 with invalid data returns error changeset" do
       card = card_fixture()
       assert {:error, %Ecto.Changeset{}} = Hearthstone.update_card(card, @invalid_attrs)
-      assert card == Hearthstone.get_card!(card.id)
+      assert card == Hearthstone.get_card!(card.card_id)
     end
 
     test "delete_card/1 deletes the card" do
       card = card_fixture()
       assert {:ok, %Card{}} = Hearthstone.delete_card(card)
-      assert_raise Ecto.NoResultsError, fn -> Hearthstone.get_card!(card.id) end
+      assert_raise Ecto.NoResultsError, fn -> Hearthstone.get_card!(card.card_id) end
     end
 
     test "change_card/1 returns a card changeset" do

@@ -25,7 +25,7 @@ defmodule DeckhubWeb.Router do
   scope "/api", DeckhubApi do
     pipe_through(:api)
 
-    resources "/cards", CardController, only: [:index, :show]
+    resources "/cards", CardController, only: [:index, :show], param: "slug"
 
     get("/markdown", MarkdownController, :render_markdown)
 

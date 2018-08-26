@@ -23,13 +23,19 @@ defmodule Deckhub.ETL do
     |> transform_cards()
   end
 
-  defp add_image_attribute(cards) do
+  defp add_image(cards) do
     Enum.map(cards, fn(card) ->
       Map.put(
         card,
         "image",
-        "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/#{card["id"]}.png"
+        "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/#{card["card_id"]}.png"
       )
+    end)
+  end
+
+  defp add_slug_name(cards) do
+    Enum.map(cards, fn(card) ->
+      Map.put(card, "slug_name", Deckhub.Text.to_slug(card["name"]))
     end)
   end
 
@@ -84,9 +90,10 @@ defmodule Deckhub.ETL do
 
   defp transform_cards(cards) do
     cards
-    |> add_image_attribute()
     |> rename_card_id()
     |> underscore_keys()
+    |> add_image()
+    |> add_slug_name()
     |> write!(base_path("cards"), ".exs")
   end
 

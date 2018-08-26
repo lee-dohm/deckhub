@@ -34,11 +34,10 @@ defmodule Deckhub.Text do
   """
   def to_slug(text) do
     text
+    |> String.trim()
     |> String.downcase()
     |> String.replace(~r/\s+/, "-")
-    |> String.replace(~r/[^\w\-]+/, "")
+    |> String.replace(~r/[^a-z0-9\-]+/, "")
     |> String.replace(~r/\-\-+/, "-")
-    |> String.replace(~r/^-+/, "", global: false)
-    |> String.replace(~r/-+$/, "", global: false)
   end
 end

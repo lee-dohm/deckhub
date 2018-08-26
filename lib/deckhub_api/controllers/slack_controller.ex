@@ -18,7 +18,7 @@ defmodule DeckhubApi.SlackController do
     message =
       params
       |> parse_command()
-      |> compose_message()
+      |> compose_message(conn)
 
     render(conn, "slash_command.json", %{message: message})
   end
@@ -27,29 +27,30 @@ defmodule DeckhubApi.SlackController do
   Composes the [Slack message](https://api.slack.com/docs/messages#composing_messages) for the
   parsed command.
   """
-  def compose_message(card: name) do
+  def compose_message([card: name], conn) do
     name
     |> Text.to_slug()
     |> Hearthstone.get_card!()
-    |> to_message()
+    |> to_message(conn)
   end
 
-  def to_message(unrecognized_command: command_text) do
+  def to_message([unrecognized_command: command_text], _conn) do
     %{
       text: "\"#{command_text}\" is not a valid Deckhub command"
     }
   end
 
-  def to_message(%Hearthstone.Card{} = card) do
+  def to_message(%Hearthstone.Card{} = card, conn) do
     %{
       attachments: [
         %{
           fallback: "*Card:* #{card.name}",
           author_name: "Deckhub",
-          author_link: "https://deckhub.org",
+          author_link: page_url(conn, :index),
+          image_url: card.image,
           title: card.name,
-          title_link: "https://deckhub.org/cards/#{card.slug}",
-          text: card.extra_text,
+          title_link: card_url(conn, :show, card),
+          text: Text.to_slackmark(card.text),
           ts: get_timestamp()
         }
       ]

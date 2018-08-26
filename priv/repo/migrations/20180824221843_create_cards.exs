@@ -3,25 +3,32 @@ defmodule Deckhub.Repo.Migrations.CreateCards do
 
   def change do
     create table(:cards) do
-      add :name, :string, null: false
-      add :type, :string, null: false
-      add :character_class, :string, null: false
-      add :set, :string, null: false
-      add :quality, :string, null: false
-      add :mana, :integer
-      add :attack, :integer
-      add :health, :integer
-      add :durability, :integer
-      add :minion_class, :string
-      add :extra_text, :string
-      add :flavor_text, :string
+      add :armor, :integer
       add :artist, :string
-      add :collectible, :boolean, default: false, null: false
-      add :slug, :string, null: false
+      add :attack, :integer
+      add :card_class, :string, null: false
+      add :card_id, :string, null: false
+      add :collectible, :boolean, null: false, default: false
+      add :cost, :integer
+      add :dbf_id, :integer, null: false
+      add :durability, :integer
+      add :elite, :boolean, null: false, default: false
+      add :flavor, :string
+      add :health, :integer
+      add :image, :string, null: false
+      add :name, :string, null: false
+      add :race, :string
+      add :rarity, :string, null: false
+      add :set, :string, null: false
+      add :slug_name, :string, null: false
+      add :text, :string
+      add :type, :string, null: false
 
       timestamps()
     end
 
-    create unique_index(:cards, [:slug])
+    create unique_index(:cards, [:slug_name])
+    create unique_index(:cards, [:card_id])
+    create unique_index(:cards, [:dbf_id])
   end
 end

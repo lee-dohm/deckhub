@@ -25,7 +25,10 @@ defmodule Deckhub.Hearthstone.Card do
   """
 
   use Ecto.Schema
+
   import Ecto.Changeset
+
+  alias Deckhub.Hearthstone.Card
 
   schema "cards" do
     field(:armor, :integer)
@@ -90,6 +93,12 @@ defmodule Deckhub.Hearthstone.Card do
       :type
     ])
   end
+
+  def rarity_color(%Card{rarity: "FREE"}), do: "#9d9d9d"
+  def rarity_color(%Card{rarity: "COMMON"}), do: "#9d9d9d"
+  def rarity_color(%Card{rarity: "RARE"}), do: "#0070dd"
+  def rarity_color(%Card{rarity: "EPIC"}), do: "#a335ee"
+  def rarity_color(%Card{rarity: "LEGENDARY"}), do: "#ff8000"
 
   defimpl Phoenix.Param, for: Deckhub.Hearthstone.Card do
     def to_param(%Deckhub.Hearthstone.Card{card_id: card_id, name: name}) do

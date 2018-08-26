@@ -5,6 +5,7 @@ defmodule DeckhubApi.SlackController do
   use DeckhubApi, :controller
 
   alias Deckhub.Hearthstone
+  alias Deckhub.Hearthstone.Card
   alias Deckhub.Text
 
   defmodule BadRequestError do
@@ -40,13 +41,14 @@ defmodule DeckhubApi.SlackController do
     }
   end
 
-  def to_message(%Hearthstone.Card{} = card, conn) do
+  def to_message(%Card{} = card, conn) do
     %{
       attachments: [
         %{
           fallback: "*Card:* #{card.name}",
           author_name: "Deckhub",
           author_link: page_url(conn, :index),
+          color: Card.rarity_color(card),
           image_url: card.image,
           mrkdwn_in: ["text"],
           title: card.name,

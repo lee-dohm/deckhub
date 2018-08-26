@@ -20,9 +20,11 @@ defmodule DeckhubWeb.Router do
     pipe_through(:browser)
 
     get("/", PageController, :index)
+
+    resources "/cards", CardController, only: [:index, :show], param: "slug"
   end
 
-  scope "/api", DeckhubApi do
+  scope "/api", DeckhubApi, as: :api do
     pipe_through(:api)
 
     resources "/cards", CardController, only: [:index, :show], param: "slug"

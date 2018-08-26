@@ -8,6 +8,10 @@ defmodule DeckhubApi.SlackController do
   alias Deckhub.Hearthstone.Card
   alias Deckhub.Text
 
+  @type command :: keyword()
+  @type error :: keyword()
+  @type slack_message :: map()
+
   defmodule BadRequestError do
     defexception plug_status: 400, message: "Bad request"
   end
@@ -15,6 +19,7 @@ defmodule DeckhubApi.SlackController do
   @doc """
   Responds to Slack slash commands.
   """
+  @spec slash_command(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def slash_command(conn, params) do
     message =
       params
@@ -28,12 +33,21 @@ defmodule DeckhubApi.SlackController do
   Composes the [Slack message](https://api.slack.com/docs/messages#composing_messages) for the
   parsed command.
   """
+  @spec compose_message(command(), Plug.Conn.t()) :: slack_message()
+  def compose_message(command, conn)
+
   def compose_message([card: name], conn) do
     name
     |> Text.to_slug()
     |> Hearthstone.get_card!()
     |> to_message(conn)
   end
+
+  @doc """
+  Converts the given object to the Slack message structure appropriate for that object.
+  """
+  @spec to_message(Card.t() | error(), Plug.Conn.t()) :: slack_message()
+  def to_message(object_or_error, conn)
 
   def to_message([unrecognized_command: command_text], _conn) do
     %{
@@ -63,6 +77,9 @@ defmodule DeckhubApi.SlackController do
   @doc """
   Parses the command from the incoming parameters.
   """
+  @spec parse_command(map()) :: command() | no_return()
+  def parse_command(params)
+
   def parse_command(%{"text" => "card " <> name}), do: [card: name]
 
   def parse_command(%{"command" => command, "text" => text}) do

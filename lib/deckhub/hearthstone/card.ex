@@ -3,7 +3,7 @@ defmodule Deckhub.Hearthstone.Card do
   Represents an individual Hearthstone card.
 
   * `armor` -- Armor value of the hero
-  * `artist` -- Name of the artist that designed the card's art
+  * `artist` -- Name of the artist or artists that designed the card's art
   * `attack` -- Amount of damage the card causes when used to attack
   * `card_class` -- Class that can use the card or `NEUTRAL` if it can be used by any class
   * `card_id` -- Guaranteed unique identifier for the card
@@ -29,6 +29,8 @@ defmodule Deckhub.Hearthstone.Card do
   import Ecto.Changeset
 
   alias Deckhub.Hearthstone.Card
+
+  @type t :: %Card{}
 
   schema "cards" do
     field(:armor, :integer)
@@ -94,11 +96,36 @@ defmodule Deckhub.Hearthstone.Card do
     ])
   end
 
+  @doc """
+  Determines whether the given card is a minion.
+  """
+  @spec minion?(t()) :: boolean()
+  def minion?(%Card{type: "MINION"}), do: true
+  def minion?(%Card{}), do: false
+
+  @doc """
+  Returns the color associated with the given card rarity.
+  """
+  @spec rarity_color(t()) :: String.t()
   def rarity_color(%Card{rarity: "FREE"}), do: "#9d9d9d"
   def rarity_color(%Card{rarity: "COMMON"}), do: "#9d9d9d"
   def rarity_color(%Card{rarity: "RARE"}), do: "#0070dd"
   def rarity_color(%Card{rarity: "EPIC"}), do: "#a335ee"
   def rarity_color(%Card{rarity: "LEGENDARY"}), do: "#ff8000"
+
+  @doc """
+  Determines whether the given card is a spell.
+  """
+  @spec spell?(t()) :: boolean()
+  def spell?(%Card{type: "SPELL"}), do: true
+  def spell?(%Card{}), do: false
+
+  @doc """
+  Determines whether the given card is a weapon.
+  """
+  @spec weapon?(t()) :: boolean()
+  def weapon?(%Card{type: "WEAPON"}), do: true
+  def weapon?(%Card{}), do: false
 
   defimpl Phoenix.Param, for: Deckhub.Hearthstone.Card do
     def to_param(%Deckhub.Hearthstone.Card{card_id: card_id, name: name}) do

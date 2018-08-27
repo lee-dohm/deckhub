@@ -164,5 +164,53 @@ defmodule Deckhub.HearthstoneTest do
       card = card_fixture()
       assert %Ecto.Changeset{} = Hearthstone.change_card(card)
     end
+
+    test "minion?/1 returns true when given a MINION" do
+      card = card_fixture(%{type: "MINION"})
+
+      assert Card.minion?(card)
+    end
+
+    test "minion?/1 returns false when given another kind of card" do
+      card = card_fixture(%{type: "SPELL"})
+
+      refute Card.minion?(card)
+    end
+
+    test "minion?/1 throws when given something other than a card" do
+      assert_raise FunctionClauseError, fn -> Card.minion?(5) end
+    end
+
+    test "spell?/1 returns true when given a SPELL" do
+      card = card_fixture(%{type: "SPELL"})
+
+      assert Card.spell?(card)
+    end
+
+    test "spell?/1 returns false when given another kind of card" do
+      card = card_fixture(%{type: "WEAPON"})
+
+      refute Card.spell?(card)
+    end
+
+    test "spell?/1 throws when given something other than a card" do
+      assert_raise FunctionClauseError, fn -> Card.spell?(5) end
+    end
+
+    test "weapon?/1 returns true when given a WEAPON" do
+      card = card_fixture(%{type: "WEAPON"})
+
+      assert Card.weapon?(card)
+    end
+
+    test "weapon?/1 returns false when given another kind of card" do
+      card = card_fixture(%{type: "HERO"})
+
+      refute Card.weapon?(card)
+    end
+
+    test "weapon?/1 throws when given something other than a card" do
+      assert_raise FunctionClauseError, fn -> Card.weapon?(5) end
+    end
   end
 end

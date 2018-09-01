@@ -1,15 +1,12 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
-export default class Home extends React.Component<{}, {}> {
-  constructor(props) {
-    super(props)
-  }
+import PageHeader from './PageHeader'
 
+export default class Home extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <div>
-        Hello, world!
+      <div className='Home'>
       </div>
     )
   }

@@ -8,14 +8,16 @@ interface Card {
   name: string
 }
 
+type CardDetailProps = RouteComponentProps<{slug: string}>
+
 interface CardDetailState {
   card: Card | null
 }
 
 const API = 'http://localhost:4000/api'
-const QUERY = '/cards/ysera'
+const QUERY = '/cards/'
 
-export default class CardDetail extends React.Component<{}, CardDetailState> {
+export default class CardDetail extends React.Component<CardDetailProps, CardDetailState> {
   constructor(props: any) {
     super(props)
 
@@ -24,10 +26,11 @@ export default class CardDetail extends React.Component<{}, CardDetailState> {
     }
   }
 
-  componentDidMount() {
-    fetch(API + QUERY)
-      .then(response => response.json())
-      .then(card => this.setState({card: card}))
+  async componentDidMount() {
+    const response = await fetch(`${API}${QUERY}${this.props.match.params.slug}`)
+    const card = await response.json()
+
+    this.setState({card: card})
   }
 
   render() {

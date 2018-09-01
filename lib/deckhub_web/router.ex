@@ -16,14 +16,6 @@ defmodule DeckhubWeb.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/", DeckhubWeb do
-    pipe_through(:browser)
-
-    get("/", PageController, :index)
-
-    resources("/cards", CardController, only: [:index, :show], param: "slug")
-  end
-
   scope "/api", DeckhubApi, as: :api do
     pipe_through(:api)
 
@@ -32,5 +24,11 @@ defmodule DeckhubWeb.Router do
     get("/markdown", MarkdownController, :render_markdown)
 
     post("/slack", SlackController, :slash_command)
+  end
+
+  scope "/", DeckhubWeb do
+    pipe_through(:browser)
+
+    get("/*path", PageController, :index)
   end
 end

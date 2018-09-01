@@ -55,18 +55,18 @@ defmodule DeckhubApi.SlackController do
     }
   end
 
-  def to_message(%Card{} = card, conn) do
+  def to_message(%Card{} = card, _conn) do
     %{
       attachments: [
         %{
           fallback: "Hearthstone card: #{card.name}",
           author_name: "Deckhub",
-          author_link: page_url(conn, :index),
+          author_link: "/",
           color: Card.rarity_color(card),
           image_url: card.image,
           mrkdwn_in: ["text"],
           title: card.name,
-          title_link: card_url(conn, :show, card),
+          title_link: "/",
           text: Text.to_slackmark(card.text),
           ts: get_timestamp()
         }

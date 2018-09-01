@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 
-import CardImage from './CardImage'
+import CardImage from './card-image'
 
 interface Card {
   image: string,

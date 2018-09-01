@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
 
-import About from './components/About'
-import CardDetail from './components/CardDetail'
-import CardList from './components/CardList'
-import Home from './components/Home'
-import Root from './Root'
+import About from './components/about'
+import CardDetail from './components/card-detail'
+import CardList from './components/card-list'
+import Home from './components/home'
+import Root from './root'
 
 export const routes = (
   <Root>

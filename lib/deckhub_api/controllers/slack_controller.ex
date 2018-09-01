@@ -39,7 +39,7 @@ defmodule DeckhubApi.SlackController do
   def compose_message([card: name], conn) do
     name
     |> Text.to_slug()
-    |> Hearthstone.get_card!()
+    |> Hearthstone.get_card_by_slug_name!()
     |> to_message(conn)
   end
 

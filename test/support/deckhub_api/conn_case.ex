@@ -1,4 +1,4 @@
-defmodule DeckhubWeb.ConnCase do
+defmodule DeckhubApi.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,7 +19,7 @@ defmodule DeckhubWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      import DeckhubWeb.Router.Helpers
+      import DeckhubApi.Router.Helpers
 
       # The default endpoint for testing
       @endpoint DeckhubWeb.Endpoint

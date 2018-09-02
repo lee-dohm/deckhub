@@ -13,7 +13,7 @@ defmodule DeckhubApi.Router do
 
     resources("/cards", CardController, only: [:index, :show], param: "slug")
 
-    get("/markdown", MarkdownController, :render_markdown)
+    post("/markdown", MarkdownController, :render_markdown)
 
     post("/slack", SlackController, :slash_command)
   end

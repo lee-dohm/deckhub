@@ -8,7 +8,7 @@ const mode = env === 'prod' ? 'production' : 'development'
 
 module.exports = {
   devtool: 'source-map',
-  entry: ['./js/app.js', './css/app.scss'],
+  entry: ['./js/app.tsx', './css/app.scss'],
   mode: mode,
   module: {
     rules: [

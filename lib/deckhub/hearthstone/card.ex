@@ -2,7 +2,7 @@ defmodule Deckhub.Hearthstone.Card do
   @moduledoc """
   Represents an individual Hearthstone card.
 
-  * `armor` -- Armor value of the hero
+  * `armor` -- Armor value of the card, specific to [Hero cards][hero-cards]
   * `artist` -- Name of the artist or artists that designed the card's art
   * `attack` -- Amount of damage the card causes when used to attack
   * `card_class` -- Class that can use the card or `NEUTRAL` if it can be used by any class
@@ -22,6 +22,8 @@ defmodule Deckhub.Hearthstone.Card do
   * `slug_name` -- Slug version of the card name for lookup when the `card_id` isn't known
   * `text` -- Text on the front of the card
   * `type` -- Type of the card: `HERO`, `MINION`, `SPELL`, or `WEAPON`
+
+  [hero-cards]: https://hearthstone.gamepedia.com/Hero_card
   """
 
   use Ecto.Schema

@@ -5,6 +5,10 @@ defmodule DeckhubApi.CardController do
 
   use DeckhubApi, :controller
 
+  alias Deckhub.Hearthstone
+
+  require Logger
+
   @doc """
   Returns the list of cards.
   """
@@ -15,7 +19,9 @@ defmodule DeckhubApi.CardController do
   @doc """
   Returns the data on an individual card.
   """
-  def show(conn, _params) do
-    conn
+  def show(conn, %{"slug" => slug}) do
+    card = Hearthstone.get_card_by_slug_name!(slug)
+
+    render(conn, "show.json", %{card: card})
   end
 end

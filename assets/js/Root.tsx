@@ -8,8 +8,10 @@ export default class Root extends React.Component<{}, {}> {
     return (
       <div className='Root'>
         <PageHeader />
-        {this.props.children}
-        <PageFooter />
+        <div className='container-lg clearfix'>
+          {this.props.children}
+          <PageFooter />
+        </div>
       </div>
     )
   }

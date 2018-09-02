@@ -5,7 +5,7 @@ import CodeWithHeart from './code-with-heart'
 export default class PageFooter extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <footer className='PageFooter container my-5'>
+      <footer className='PageFooter col-12 float-left border-top p-3'>
         <CodeWithHeart name='Lee Dohm' repo='https://github.com/lee-dohm/deckhub' />
       </footer>
     )

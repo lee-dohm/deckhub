@@ -5,7 +5,8 @@ import CardImage from './card-image'
 
 interface Card {
   image: string,
-  name: string
+  name: string,
+  small_image: string
 }
 
 type CardDetailProps = RouteComponentProps<{slug: string}>
@@ -46,7 +47,7 @@ export default class CardDetail extends React.Component<CardDetailProps, CardDet
 
     return (
       <div className='CardDetail'>
-        <CardImage image={card.image} />
+        <CardImage image={card.small_image} />
         <p>{card.name}</p>
       </div>
     )

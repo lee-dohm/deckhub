@@ -25,11 +25,15 @@ defmodule Deckhub.ETL do
 
   defp add_image(cards) do
     Enum.map(cards, fn(card) ->
-      Map.put(
-        card,
-        "image",
-        "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/#{card["card_id"]}.png"
-      )
+      card
+      |> Map.put(
+          "image",
+          "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/#{card["card_id"]}.png"
+        )
+      |> Map.put(
+          "small_image",
+          "https://art.hearthstonejson.com/v1/render/latest/enUS/256x/#{card["card_id"]}.png"
+        )
     end)
   end
 

@@ -20,6 +20,7 @@ defmodule Deckhub.Hearthstone.Card do
   * `rarity` -- Quality of the card: `FREE`, `COMMON`, `RARE`, `EPIC`, or `LEGENDARY`
   * `set` -- The set the card was released in
   * `slug_name` -- Slug version of the card name for lookup when the `card_id` isn't known
+  * `small_image` -- URL of the small sized card image
   * `text` -- Text on the front of the card
   * `type` -- Type of the card: `HERO`, `MINION`, `SPELL`, or `WEAPON`
 
@@ -53,6 +54,7 @@ defmodule Deckhub.Hearthstone.Card do
     field(:rarity, :string)
     field(:set, :string)
     field(:slug_name, :string)
+    field(:small_image, :string)
     field(:text, :string)
     field(:type, :string)
 
@@ -81,6 +83,7 @@ defmodule Deckhub.Hearthstone.Card do
       :rarity,
       :set,
       :slug_name,
+      :small_image,
       :text,
       :type
     ])
@@ -94,6 +97,7 @@ defmodule Deckhub.Hearthstone.Card do
       :rarity,
       :set,
       :slug_name,
+      :small_image,
       :type
     ])
   end

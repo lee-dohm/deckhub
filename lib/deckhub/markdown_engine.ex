@@ -8,7 +8,7 @@ defmodule Deckhub.MarkdownEngine do
 
   For available options see `Cmark.to_html/2`.
   """
-  def render(text, options \\ [:safe, :smart, :validate_utf8]) do
+  def render(text, options \\ [:nobreaks, :safe, :smart, :validate_utf8]) do
     Cmark.to_html(text, options)
   end
 end

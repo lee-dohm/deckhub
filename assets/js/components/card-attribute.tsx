@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import MarkdownBody from './markdown-body'
+
 interface CardAttributeProps {
   name: string,
   value: string | number | boolean
@@ -7,10 +9,23 @@ interface CardAttributeProps {
 
 export default class CardAttribute extends React.Component<CardAttributeProps, {}> {
   public render() {
+    const {name, value} = this.props
+
+    if (name === 'text' && typeof value === 'string') {
+      return (
+        <tr className={'CardAttribute text'}>
+          <th>Text</th>
+          <td>
+            <MarkdownBody markdown={value} />
+          </td>
+        </tr>
+      )
+    }
+
     return (
-      <tr className={'CardAttribute ' + this.props.name}>
-        <th>{this.humanizeName(this.props.name)}</th>
-        <td>{this.humanizeValue(this.props.name, this.props.value)}</td>
+      <tr className={'CardAttribute ' + name}>
+        <th>{this.humanizeName(name)}</th>
+        <td>{this.humanizeValue(name, value)}</td>
       </tr>
     )
   }

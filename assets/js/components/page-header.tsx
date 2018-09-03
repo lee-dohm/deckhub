@@ -5,7 +5,7 @@ export default class PageHeader extends React.Component<{}, {}> {
     return (
       <div className='PageHeader bg-gray-dark text-white p-3'>
         <div className='d-flex flex-justify-between'>
-          <a className='text-white no-underline' href='/'>Deckhub</a>
+          <a className='text-white no-underline h1' href='/'>Deckhub</a>
           <nav className='flex-self-center'>
             <a className='text-white' href='/about/'>About</a>
           </nav>

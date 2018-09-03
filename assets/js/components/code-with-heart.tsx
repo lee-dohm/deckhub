@@ -3,7 +3,7 @@ import Octicon, {Code, Heart} from '@githubprimer/octicons-react'
 
 interface CodeWithHeartProps {
   name: string,
-  repo: string
+  link: string
 }
 
 export default class CodeWithHeart extends React.Component<CodeWithHeartProps, {}> {
@@ -14,7 +14,7 @@ export default class CodeWithHeart extends React.Component<CodeWithHeartProps, {
         {' with '}
         <Octicon icon={Heart} />
         {' by '}
-        <a className='link-gray-dark' href={this.props.repo}>{this.props.name}</a>
+        <a className='link-gray-dark' href={this.props.link}>{this.props.name}</a>
       </div>
     )
   }

@@ -17,7 +17,7 @@ export default class PageFooter extends React.Component<{}, {}> {
               <GitHubLink repo='https://github.com/lee-dohm/deckhub' />
             </div>
             <div className='text-center small my-2'>
-              <CodeWithHeart name='Lee Dohm' repo='https://www.lee-dohm.com' />
+              <CodeWithHeart name='Lee Dohm' link='https://www.lee-dohm.com' />
             </div>
           </div>
         </div>

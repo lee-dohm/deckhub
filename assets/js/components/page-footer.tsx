@@ -7,7 +7,7 @@ import GitHubLink from './github-link'
 export default class PageFooter extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <footer className='PageFooter container-lg'>
+      <footer className='PageFooter container-lg my-2'>
         <div className='columns'>
           <div className='two-fifths column centered'>
             <div className='border-top text-center small my-2 pt-2'>

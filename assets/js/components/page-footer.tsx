@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Octicon, {MarkGithub} from '@githubprimer/octicons-react'
 
 import AboutLink from './about-link'
 import CodeWithHeart from './code-with-heart'

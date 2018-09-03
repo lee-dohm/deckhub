@@ -17,3 +17,9 @@ alias Deckhub.Hearthstone
 Enum.each(cards, fn(map) ->
   {:ok, _} = Hearthstone.create_card(map)
 end)
+
+{terms, _} = Code.eval_file(Path.join(__DIR__, "terms.exs"))
+
+Enum.each(terms, fn(map) ->
+  {:ok, _} = Hearthstone.create_term(map)
+end)

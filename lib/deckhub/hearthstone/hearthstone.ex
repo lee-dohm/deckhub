@@ -7,6 +7,7 @@ defmodule Deckhub.Hearthstone do
 
   alias Deckhub.Repo
   alias Deckhub.Hearthstone.Card
+  alias Deckhub.Hearthstone.Term
 
   @doc """
   Returns the list of cards.
@@ -21,6 +22,10 @@ defmodule Deckhub.Hearthstone do
   """
   def list_cards do
     Repo.all(Card)
+  end
+
+  def list_terms do
+    Repo.all(Term)
   end
 
   @doc """
@@ -57,6 +62,8 @@ defmodule Deckhub.Hearthstone do
   """
   def get_card_by_slug_name!(slug_name), do: Repo.get_by!(Card, slug_name: slug_name)
 
+  def get_term!(key), do: Repo.get_by!(Term, key: key)
+
   @doc """
   Creates a card.
 
@@ -73,6 +80,12 @@ defmodule Deckhub.Hearthstone do
   def create_card(attrs \\ %{}) do
     %Card{}
     |> Card.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def create_term(attrs \\ %{}) do
+    %Term{}
+    |> Term.changeset(attrs)
     |> Repo.insert()
   end
 

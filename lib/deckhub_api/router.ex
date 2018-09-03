@@ -12,6 +12,7 @@ defmodule DeckhubApi.Router do
     pipe_through(:api)
 
     resources("/cards", CardController, only: [:index, :show], param: "slug")
+    resources("/glossary", TermController, only: [:index, :show], param: "key")
 
     post("/markdown", MarkdownController, :render_markdown)
 

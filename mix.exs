@@ -50,7 +50,7 @@ defmodule Deckhub.Mixfile do
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix, "~> 1.3.4"},
+      {:phoenix, "~> 1.4.13"},
       {:postgrex, ">= 0.0.0"},
 
       # Development dependencies

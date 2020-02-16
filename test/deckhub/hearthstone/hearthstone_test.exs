@@ -26,7 +26,8 @@ defmodule Deckhub.HearthstoneTest do
       set: "CORE",
       slug_name: "some-name",
       text: "some text",
-      type: "MINION"
+      type: "MINION",
+      small_image: "some small image"
     }
 
     @update_attrs %{
@@ -49,7 +50,8 @@ defmodule Deckhub.HearthstoneTest do
       set: "BOOMSDAY",
       slug_name: "some-updated-name",
       text: "some updated text",
-      type: "SPELL"
+      type: "SPELL",
+      small_image: "some updated small image"
     }
 
     @invalid_attrs %{
@@ -72,7 +74,8 @@ defmodule Deckhub.HearthstoneTest do
       set: nil,
       slug_name: nil,
       text: nil,
-      type: nil
+      type: nil,
+      small_image: nil
     }
 
     def card_fixture(attrs \\ %{}) do

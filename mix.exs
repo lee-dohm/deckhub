@@ -5,7 +5,7 @@ defmodule Deckhub.Mixfile do
     [
       app: :deckhub,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -49,6 +49,7 @@ defmodule Deckhub.Mixfile do
       {:credo, "~> 0.10.0", only: [:dev, :test]},
       {:dotenv, "~> 3.0.0", only: :dev},
       {:ex_doc, "~> 0.16", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.6", only: :test},
       {:httpoison, "~> 1.2", only: :dev},
       {:phoenix_live_reload, "~> 1.0", only: :dev}
     ]

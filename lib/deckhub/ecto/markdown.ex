@@ -27,7 +27,8 @@ defmodule Deckhub.Ecto.Markdown do
 
   [beyond-functions]: https://blog.usejournal.com/beyond-functions-in-elixir-refactoring-for-maintainability-5c73daba77f3
   """
-  @behaviour Ecto.Type
+
+  use Ecto.Type
 
   @doc """
   Returns the underlying schema type for the custom type.

@@ -39,7 +39,7 @@ defmodule Deckhub.Mixfile do
       {:cmark, "~> 0.7"},
       {:cowboy, "~> 1.0"},
       {:gettext, "~> 0.11"},
-      {:phoenix_ecto, "~> 3.2"},
+      {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix, "~> 1.3.4"},

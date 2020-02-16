@@ -10,8 +10,8 @@ defmodule Deckhub.Hearthstone.Term do
   import Ecto.Changeset
 
   schema "terms" do
-    field :key, :string
-    field :value, Markdown
+    field(:key, :string)
+    field(:value, Markdown)
 
     timestamps()
   end

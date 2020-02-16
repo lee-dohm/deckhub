@@ -57,7 +57,7 @@ defmodule Deckhub.Markdown do
   @doc """
   Renders a chunk of Markdown to its `iodata` representation.
   """
-  def to_iodata(markdown = %__MODULE__{}), do: to_html(markdown)
+  def to_iodata(%__MODULE__{} = markdown), do: to_html(markdown)
 
   defimpl Phoenix.HTML.Safe do
     # credo:disable-for-lines:2

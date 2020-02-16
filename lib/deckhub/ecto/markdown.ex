@@ -47,7 +47,7 @@ defmodule Deckhub.Ecto.Markdown do
     {:ok, %Deckhub.Markdown{text: binary}}
   end
 
-  def cast(markdown = %Deckhub.Markdown{}), do: {:ok, markdown}
+  def cast(%Deckhub.Markdown{} = markdown), do: {:ok, markdown}
   def cast(_other), do: :error
 
   @doc """

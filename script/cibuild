@@ -20,6 +20,10 @@ echo "==> Checking format…"
 
 mix format --check-formatted
 
+# echo "==> Running shellcheck…"
+#
+# shellcheck script/*
+
 # No need to run the credo linter in CI because we have an extra service installed that runs it
 # separately
 
@@ -27,6 +31,12 @@ echo "==> Running tests…"
 
 if [ -n "$TRAVIS" ]; then
   mix coveralls.travis
+elif [ -n "$GITHUB_ACTIONS" ]; then
+  branch=$(echo "$GITHUB_REF" | sed "s/refs\/heads\///")
+  message=$(jq --raw-output ".commits[-1].message" "$GITHUB_EVENT_PATH")
+
+  mix coveralls.post --branch "$branch" --committer "$GITHUB_ACTOR" --name "actions" \
+      --message "$message" --sha "$GITHUB_SHA"
 else
   mix test
 fi

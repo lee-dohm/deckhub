@@ -11,7 +11,6 @@ config :logger, level: :warn
 
 # Configure your database
 config :deckhub, Deckhub.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "deckhub_test",

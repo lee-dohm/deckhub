@@ -44,7 +44,6 @@ defmodule Deckhub.Mixfile do
     [
       # Dependencies
       {:cmark, "~> 0.7"},
-      {:cowboy, "~> 1.0"},
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.1"},
@@ -52,6 +51,7 @@ defmodule Deckhub.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix, "~> 1.4.13"},
+      {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},
 
       # Development dependencies

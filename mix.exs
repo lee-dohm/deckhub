@@ -47,6 +47,7 @@ defmodule Deckhub.Mixfile do
       {:cowboy, "~> 1.0"},
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
+      {:jason, "~> 1.1"},
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_pubsub, "~> 1.0"},

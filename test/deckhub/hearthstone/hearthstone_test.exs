@@ -56,15 +56,6 @@ defmodule Deckhub.HearthstoneTest do
       small_image: nil
     }
 
-    def card_fixture(attrs \\ %{}) do
-      {:ok, card} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Hearthstone.create_card()
-
-      card
-    end
-
     test "list_cards/0 returns all cards" do
       card = insert(:card)
 
@@ -108,7 +99,8 @@ defmodule Deckhub.HearthstoneTest do
     end
 
     test "update_card/2 with valid data updates the card" do
-      card = card_fixture()
+      card = insert(:card)
+
       assert {:ok, card} = Hearthstone.update_card(card, @update_attrs)
       assert %Card{} = card
       assert card.armor == 43

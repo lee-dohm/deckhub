@@ -19,6 +19,7 @@ config :deckhub, DeckhubWeb.Endpoint,
 # Configure Phoenix
 config :phoenix, :generators, binary_id: true
 config :phoenix, :json_library, Jason
+
 config :phoenix, :template_engines,
   slim: PhoenixSlime.Engine,
   slime: PhoenixSlime.Engine,

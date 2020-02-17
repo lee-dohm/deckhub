@@ -42,7 +42,7 @@ config :deckhub, DeckhubWeb.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{lib/deckhub_web/views/.*(ex)$},
-      ~r{lib/deckhub_web/templates/.*(eex)$}
+      ~r{lib/deckhub_web/templates/.*(eex|slim|slime)$}
     ]
   ]
 

@@ -20,6 +20,11 @@ config :deckhub, DeckhubWeb.Endpoint,
 config :phoenix, :generators, binary_id: true
 config :phoenix, :json_library, Jason
 
+config :phoenix, :template_engines,
+  slim: PhoenixSlime.Engine,
+  slime: PhoenixSlime.Engine,
+  slimleex: PhoenixSlime.LiveViewEngine
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

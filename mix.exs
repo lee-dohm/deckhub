@@ -50,6 +50,7 @@ defmodule Deckhub.Mixfile do
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_pubsub, "~> 1.0"},
+      {:phoenix_slime, "~> 0.13"},
       {:phoenix, "~> 1.4.13"},
       {:plug_cowboy, "~> 2.0"},
       {:postgrex, ">= 0.0.0"},

@@ -11,7 +11,8 @@ config :deckhub,
   code_with_heart: [
     name: "Lee Dohm",
     url: "https://www.lee-dohm.com"
-  ]
+  ],
+  github_link: "lee-dohm/deckhub"
 
 # Configures the endpoint
 config :deckhub, DeckhubWeb.Endpoint,

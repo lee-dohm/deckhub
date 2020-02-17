@@ -12,6 +12,11 @@ defmodule DeckhubWeb.PrimerHelpers do
 
   import DeckhubWeb.Gettext, only: [gettext: 1]
 
+  @typedoc """
+  The application name as an atom.
+  """
+  @type app_name :: atom
+
   defmodule MissingConfigurationError do
     @moduledoc """
     Exception raised when there is an element of required application configuration missing.
@@ -108,5 +113,71 @@ defmodule DeckhubWeb.PrimerHelpers do
       " by ",
       link(name, link_options)
     ])
+  end
+
+  @doc """
+  Renders a link to the project on GitHub.
+
+  Retrieves the project name or URL from the application configuration for the default application.
+  """
+  @spec github_link(Keyword.t()) :: Phoenix.HTML.safe()
+  def github_link(options \\ [])
+
+  def github_link(options), do: github_link(options, [])
+
+  @doc """
+  Renders a link to the project on GitHub.
+
+  If the first parameter is an atom, it retrieves the project name or URL from the application
+  configuration. Otherwise, the project can be either the GitHub `owner/project` identifier or the
+  full GitHub URL.
+
+  This configuration information can be added to the application configuration by adding the
+  following to your `config.exs`:
+
+  ```
+  config :app_name,
+    github_link: "owner/name"
+  ```
+
+  If the configuration information is missing and the first parameter is an atom, a
+  `AtomTweaksWeb.PrimerHelpers.MissingConfigurationError` is raised.
+
+  ## Options
+
+  All options are passed to the underlying HTML `a` element.
+  """
+  @spec github_link(app_name | String.t(), Keyword.t()) :: Phoenix.HTML.safe()
+  def github_link(app_name_or_project, options)
+
+  def github_link(options, _no_options) when is_list(options) do
+    github_link(Application.get_application(__MODULE__), options)
+  end
+
+  def github_link(app_name, options) when is_atom(app_name) do
+    url = Application.get_env(app_name, :github_link)
+
+    unless url, do: raise(MissingConfigurationError, :github_link)
+
+    github_link(url, options)
+  end
+
+  def github_link(project, options) when is_binary(project) do
+    # Prepend the `https://github.com/` if only the name with owner is specified
+    url = if project =~ ~r{^[^/]+/[^/]+$}, do: "https://github.com/#{project}", else: project
+
+    link_options =
+      Keyword.merge(
+        [
+          to: url,
+          "aria-label": gettext("View this project on GitHub"),
+          class: "link-gray-dark tooltipped tooltipped-n"
+        ],
+        options
+      )
+
+    link(link_options) do
+      PhoenixOcticons.octicon("mark-github")
+    end
   end
 end

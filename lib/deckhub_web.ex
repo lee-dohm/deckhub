@@ -20,8 +20,10 @@ defmodule DeckhubWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: DeckhubWeb
+
+      alias DeckhubWeb.Router.Helpers, as: Routes
+
       import Plug.Conn
-      import DeckhubWeb.Router.Helpers
       import DeckhubWeb.Gettext
     end
   end
@@ -32,15 +34,17 @@ defmodule DeckhubWeb do
         root: "lib/deckhub_web/templates",
         namespace: DeckhubWeb
 
+      alias DeckhubWeb.Router.Helpers, as: Routes
+
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import DeckhubWeb.Router.Helpers
       import DeckhubWeb.ErrorHelpers
       import DeckhubWeb.Gettext
+      import DeckhubWeb.PrimerHelpers
     end
   end
 

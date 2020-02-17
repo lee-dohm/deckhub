@@ -9,9 +9,22 @@ html lang="en"
 
     title Deckhub
 
-    link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
+    link rel="stylesheet" href="#{Routes.static_path(@conn, "/css/app.css")}"
 
   body
+    .Header
+      .Header-item
+        a.Header-link href="/"
+          h1 Deckhub
+
     = render @view_module, @view_template, assigns
 
-    script src="#{static_path(@conn, "/js/app.js")}"
+    .Footer.container.clearfix.my-5
+      .col-6.mx-auto
+        .border-top.text-center.small.my-2.pt-2
+          .d-flex.flex-justify-center
+            .px-1 About
+        .text-center.small.my-2
+          = code_with_heart()
+
+    script src="#{Routes.static_path(@conn, "/js/app.js")}"

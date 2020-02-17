@@ -55,7 +55,7 @@ defmodule Deckhub.Mixfile do
       {:postgrex, ">= 0.0.0"},
 
       # Development dependencies
-      {:credo, "~> 0.10.0", only: [:dev, :test]},
+      {:credo, "~> 1.2.2", only: [:dev, :test]},
       {:dotenv, "~> 3.0.0", only: :dev},
       {:ex_doc, "~> 0.16", only: [:dev, :test], runtime: false},
       {:ex_machina, "~> 2.3", only: :test},

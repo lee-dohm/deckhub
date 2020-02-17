@@ -12,5 +12,6 @@ html lang="en"
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
 
   body
-    #react-app
+    = render @view_module, @view_template, assigns
+
     script src="#{static_path(@conn, "/js/app.js")}"

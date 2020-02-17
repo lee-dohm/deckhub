@@ -21,6 +21,6 @@ defmodule DeckhubWeb.Router do
   scope "/", DeckhubWeb do
     pipe_through(:browser)
 
-    get("/*path", PageController, :index)
+    get("/", PageController, :index)
   end
 end

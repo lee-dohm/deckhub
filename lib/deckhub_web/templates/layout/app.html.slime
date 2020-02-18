@@ -4,10 +4,10 @@ html lang="en"
     meta charset="utf8"
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    meta name="description" content="A Hearthstone deck building and sharing site, inspired by GitHub"
+    meta name="description" content="#{gettext("A Hearthstone deck building and sharing site, inspired by GitHub")}"
     meta name="author" content="Lee Dohm"
 
-    title Deckhub
+    title = gettext("Deckhub")
 
     link rel="stylesheet" href="#{Routes.static_path(@conn, "/css/app.css")}"
 
@@ -15,7 +15,7 @@ html lang="en"
     .Header
       .Header-item
         a.Header-link href="/"
-          h1 Deckhub
+          h1 = gettext("Deckhub")
 
     = render @view_module, @view_template, assigns
 
@@ -23,7 +23,7 @@ html lang="en"
       .col-6.mx-auto
         .border-top.text-center.small.my-2.pt-2
           .d-flex.flex-justify-center
-            .px-3 About
+            .px-3 = link(gettext("About"), to: Routes.page_path(@conn, :about), id: "about-link")
             .px-3 = github_link()
         .text-center.small.my-2
           = code_with_heart()

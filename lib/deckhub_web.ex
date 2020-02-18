@@ -44,6 +44,7 @@ defmodule DeckhubWeb do
 
       import DeckhubWeb.ErrorHelpers
       import DeckhubWeb.Gettext
+      import DeckhubWeb.HearthstoneHelpers
       import DeckhubWeb.PrimerHelpers
     end
   end

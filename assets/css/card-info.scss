@@ -1,0 +1,32 @@
+.CardInfo ul {
+  padding-left: $spacer-3;
+}
+
+.CardInfo-name {
+  font-size: $h2-size;
+  font-weight: bold;
+}
+
+.CardInfo-flavor {
+  color: $gray-500;
+  font-size: $h3-size;
+  font-style: italic;
+}
+
+.CardInfo-text {
+  font-size: $h3-size;
+  padding-bottom: $spacer-3;
+}
+
+.CardInfo-attribute {
+  font-weight: bold;
+}
+
+.CardInfo-attribute-name {
+  font-weight: bold;
+  padding-right: $spacer-1;
+
+  &::after {
+    content: ":";
+  }
+}

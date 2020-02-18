@@ -23,5 +23,7 @@ defmodule DeckhubWeb.Router do
 
     get("/", PageController, :index)
     get("/about", PageController, :about)
+
+    resources("/cards", CardController, only: [:show])
   end
 end

@@ -6,6 +6,7 @@ defmodule DeckhubWeb.PrimerHelpers do
   All functions can be used either within a template or composed together in code. Each function
   should always emit `t:Phoenix.HTML.safe/0` objects or throw an exception.
   """
+
   use Phoenix.HTML
 
   require DeckhubWeb.Gettext

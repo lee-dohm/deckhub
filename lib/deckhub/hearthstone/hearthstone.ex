@@ -15,53 +15,61 @@ defmodule Deckhub.Hearthstone do
   ## Examples
 
   ```
-  iex> list_cards()
+  iex> Deckhub.Hearthstone.list_cards()
   [%Card{}, ...]
   ```
-
   """
   def list_cards do
     Repo.all(Card)
   end
 
+  @doc """
+  Returns the list of terms in the database.
+
+  ## Examples
+
+  ```
+  iex> Deckhub.Hearthstone.list_terms()
+  [%Term{}, ...]
+  ```
+  """
   def list_terms do
     Repo.all(Term)
   end
 
   @doc """
-  Gets a single card by its `card_id`.
+  Gets a single card by either its `dbf_id` or its `slug_name`.
 
   Raises `Ecto.NoResultsError` if the Card does not exist.
 
   ## Examples
 
   ```
-  iex> get_card!("CARD_01")
-  %Card{}
+  iex> get_card!(662)
+  %Card{slug_name: "frostbolt", dbf_id: 662, ...}
+
+  iex> get_card!("frostbolt")
+  %Card{slug_name: "frostbolt", dbf_id: 662, ...}
 
   iex> get_card!("not-a-card")
   ** (Ecto.NoResultsError)
   ```
   """
-  def get_card!(card_id), do: Repo.get_by!(Card, card_id: card_id)
+  def get_card!(dbf_id) when is_integer(dbf_id), do: Repo.get_by!(Card, dbf_id: dbf_id)
+  def get_card!(slug_name) when is_binary(slug_name), do: Repo.get_by!(Card, slug_name: slug_name)
 
   @doc """
-  Gets a single card by its `slug_name`.
+  Gets a term by its `key`.
 
-  Raises `Ecto.NoResultsError` if the Card doees not exist.
+  Raises `Ecto.NoResultsError` if the `Term` does not exist.
 
   ## Examples
 
   ```
-  iex> get_card!("abomination")
-  %Card{}
-
-  iex> get_card!("not-a-card")
-  ** (Ecto.NoResultsError)
+  iex> Deckhub.Hearthstone.get_term!("some-term")
+  %Term{}
   ```
   """
-  def get_card_by_slug_name!(slug_name), do: Repo.get_by!(Card, slug_name: slug_name)
-
   def get_term!(key), do: Repo.get_by!(Term, key: key)
 
   @doc """

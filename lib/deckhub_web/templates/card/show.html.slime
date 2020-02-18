@@ -1,0 +1,40 @@
+.container-lg.clearfix
+  .col-6.float-left
+    img src="#{@card.image}"
+  .col-6.float-left.pt-8
+    .CardInfo
+      .CardInfo-name = @card.name
+      .CardInfo-flavor = @card.flavor
+      .CardInfo-text = raw(@card.text)
+
+      ul
+        li
+          span.CardInfo-attribute-name = gettext("Type")
+          span.CardInfo-attribute-value = @card.type
+        li
+          span.CardInfo-attribute-name = gettext("Rarity")
+          span.CardInfo-attribute-value = @card.rarity
+        li
+          span.CardInfo-attribute-name = gettext("Set")
+          span.CardInfo-attribute-value = @card.set
+        li
+          span.CardInfo-attribute-name = gettext("Class")
+          span.CardInfo-attribute-value = @card.card_class
+        = if @card.race do
+          li
+            span.CardInfo-attribute-name = gettext("Minion Type")
+            span.CardInfo-attribute-value = @card.race
+        li
+          span.CardInfo-attribute-name = gettext("Cost to Craft")
+          span.CardInfo-attribute-value = gettext("%{normal} / %{golden} (Golden)", normal: from_dust(@card), golden: from_dust(@card, :golden))
+        li
+          span.CardInfo-attribute-name = gettext("Disenchanting Yield")
+          span.CardInfo-attribute-value = gettext("%{normal} / %{golden} (Golden)", normal: to_dust(@card), golden: to_dust(@card, :golden))
+        li
+          span.CardInfo-attribute-name = gettext("Artist")
+          span.CardInfo-attribute-value = @card.artist
+        li
+          = if @card.collectible do
+            span.CardInfo-attribute = gettext("Collectible")
+          - else
+            span.CardInfo-attribute = gettext("Not Collectible")

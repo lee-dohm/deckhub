@@ -1,11 +1,15 @@
 defmodule DeckhubWeb.CardController do
-  @moduledoc false
+  @moduledoc """
+  Handles requests for card routes.
+  """
 
-  def index(conn, _params) do
-    conn
-  end
+  use DeckhubWeb, :controller
 
-  def show(conn, _params) do
-    conn
+  alias Deckhub.Hearthstone
+
+  def show(conn, %{"id" => id}) do
+    card = Hearthstone.get_card!(id)
+
+    render(conn, "show.html", card: card)
   end
 end

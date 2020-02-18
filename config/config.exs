@@ -7,7 +7,12 @@ use Mix.Config
 
 # General application configuration
 config :deckhub,
-  ecto_repos: [Deckhub.Repo]
+  ecto_repos: [Deckhub.Repo],
+  code_with_heart: [
+    name: "Lee Dohm",
+    url: "https://www.lee-dohm.com"
+  ],
+  github_link: "lee-dohm/deckhub"
 
 # Configures the endpoint
 config :deckhub, DeckhubWeb.Endpoint,

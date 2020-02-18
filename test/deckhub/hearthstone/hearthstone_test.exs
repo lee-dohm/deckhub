@@ -65,7 +65,7 @@ defmodule Deckhub.HearthstoneTest do
     test "get_card!/1 returns the card with given id" do
       card = insert(:card)
 
-      assert Hearthstone.get_card!(card.card_id) == card
+      assert Hearthstone.get_card!(card.dbf_id) == card
     end
 
     test "create_card/1 with valid data creates a card" do
@@ -129,14 +129,14 @@ defmodule Deckhub.HearthstoneTest do
       card = insert(:card)
 
       assert {:error, %Ecto.Changeset{}} = Hearthstone.update_card(card, @invalid_attrs)
-      assert card == Hearthstone.get_card!(card.card_id)
+      assert card == Hearthstone.get_card!(card.dbf_id)
     end
 
     test "delete_card/1 deletes the card" do
       card = insert(:card)
 
       assert {:ok, %Card{}} = Hearthstone.delete_card(card)
-      assert_raise Ecto.NoResultsError, fn -> Hearthstone.get_card!(card.card_id) end
+      assert_raise Ecto.NoResultsError, fn -> Hearthstone.get_card!(card.dbf_id) end
     end
 
     test "change_card/1 returns a card changeset" do

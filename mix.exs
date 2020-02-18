@@ -49,6 +49,7 @@ defmodule Deckhub.Mixfile do
       {:jason, "~> 1.1"},
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.10"},
+      {:phoenix_octicons, "~> 0.6.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_slime, "~> 0.13"},
       {:phoenix, "~> 1.4.13"},

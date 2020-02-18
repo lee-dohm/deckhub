@@ -15,7 +15,7 @@ alias Deckhub.Hearthstone
 {cards, _} = Code.eval_file(Path.join(__DIR__, "cards.exs"))
 
 Enum.each(cards, fn(map) ->
-  {:ok, _} = Hearthstone.create_card(map)
+  unless map["set"] == "HERO_SKINS", do: {:ok, _} = Hearthstone.create_card(map)
 end)
 
 {terms, _} = Code.eval_file(Path.join(__DIR__, "terms.exs"))

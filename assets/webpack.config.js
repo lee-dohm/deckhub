@@ -8,7 +8,7 @@ const mode = env === 'prod' ? 'production' : 'development'
 
 module.exports = {
   devtool: 'source-map',
-  entry: ['./js/app.tsx', './css/app.scss'],
+  entry: ['./js/app.js', './css/app.scss'],
   mode: mode,
   module: {
     rules: [
@@ -19,19 +19,17 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             {
-              loader: 'css-loader',
-              options: {
-                minimize: true,
-                sourceMap: !isProduction
-              }
+              loader: 'css-loader'
             },
             {
               loader: 'sass-loader',
               options: {
-                includePaths: [
-                  path.resolve(__dirname, 'node_modules')
-                ],
-                outputStyle: 'compressed',
+                sassOptions: {
+                  includePaths: [
+                    path.resolve(__dirname, 'node_modules')
+                  ],
+                  outputStyle: 'compressed'
+                },
                 sourceMap: !isProduction
               }
             }

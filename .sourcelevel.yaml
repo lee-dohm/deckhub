@@ -18,10 +18,10 @@ engines:
     enabled: true
     channel: beta
 exclude_paths:
-- config
-- docs
-- priv/repo
-- script
-- spec
+  - config
+  - docs
+  - priv/repo
+  - script
+  - spec
 pull_requests:
   comments: false

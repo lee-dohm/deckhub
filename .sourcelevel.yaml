@@ -22,9 +22,10 @@ engines:
     enabled: true
     channel: beta
 exclude_paths:
-- config
-- priv/repo
-- script
-- test
+  - assets/webpack.config.js
+  - config
+  - priv/repo
+  - script
+  - test
 pull_requests:
   comments: false

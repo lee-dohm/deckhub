@@ -2,6 +2,19 @@
   padding-left: $spacer-3;
 }
 
+.CardInfo-attribute {
+  font-weight: bold;
+}
+
+.CardInfo-attribute-name {
+  font-weight: bold;
+  padding-right: $spacer-1;
+
+  &::after {
+    content: ':';
+  }
+}
+
 .CardInfo-name {
   font-size: $h2-size;
   font-weight: bold;
@@ -16,17 +29,4 @@
 .CardInfo-text {
   font-size: $h3-size;
   padding-bottom: $spacer-3;
-}
-
-.CardInfo-attribute {
-  font-weight: bold;
-}
-
-.CardInfo-attribute-name {
-  font-weight: bold;
-  padding-right: $spacer-1;
-
-  &::after {
-    content: ":";
-  }
 }

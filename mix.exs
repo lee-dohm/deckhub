@@ -37,9 +37,6 @@ defmodule Deckhub.Mixfile do
     ]
   end
 
-  # Specifies your project dependencies.
-  #
-  # Type `mix help deps` for examples and options.
   defp deps do
     [
       # Dependencies
@@ -47,6 +44,7 @@ defmodule Deckhub.Mixfile do
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.1"},
+      {:oauth2, "~> 2.0"},
       {:phoenix_ecto, "~> 4.1"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_octicons, "~> 0.6.0"},

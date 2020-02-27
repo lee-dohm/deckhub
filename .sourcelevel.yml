@@ -17,6 +17,7 @@ engines:
     channel: beta
 exclude_paths:
   - assets/webpack.config.js
+  - assets/js/socket.js
   - config
   - priv/repo
   - script

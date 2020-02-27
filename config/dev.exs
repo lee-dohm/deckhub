@@ -46,13 +46,6 @@ config :deckhub, DeckhubWeb.Endpoint,
     ]
   ]
 
-# Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
-
-# Set a higher stacktrace during development. Avoid configuring such
-# in production as building large stacktraces may be expensive.
-config :phoenix, :stacktrace_depth, 20
-
 # Configure your database
 config :deckhub, Deckhub.Repo,
   username: "postgres",
@@ -62,3 +55,13 @@ config :deckhub, Deckhub.Repo,
   pool_size: 10
 
 config :ex_doc, :markdown_processor, ExDoc.Markdown.Cmark
+
+# Do not include metadata nor timestamps in development logs
+config :logger, :console, format: "[$level] $message\n"
+
+# Configure OAuth debugging
+config :oauth2, debug: true
+
+# Set a higher stacktrace during development. Avoid configuring such
+# in production as building large stacktraces may be expensive.
+config :phoenix, :stacktrace_depth, 20

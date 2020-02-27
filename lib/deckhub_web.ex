@@ -45,6 +45,8 @@ defmodule DeckhubWeb do
       import DeckhubWeb.Gettext
       import DeckhubWeb.HearthstoneHelpers
       import DeckhubWeb.PrimerHelpers
+
+      import PhoenixOcticons
     end
   end
 

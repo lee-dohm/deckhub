@@ -21,11 +21,11 @@ Browse [open issues](https://github.com/lee-dohm/atom-style-tweaks/issues) to se
 You'll need to:
 
 1. Install [PostgreSQL][postgres-download] and start it
-1. Create [a GitHub OAuth app][oauth-app] - set the callback URL to `http://localhost:4000/auth/callback`
-1. Copy `.env.example` to `.env` and set the `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` values to the ones obtained from the application in the previous step
+1. Create [a Battle.net OAuth client][oauth-client] - set the callback URL to `http://localhost:4000/auth/callback`
+1. Copy `.env.example` to `.env` and set the `BATTLE_NET_CLIENT_ID` and `BATTLE_NET_CLIENT_SECRET` values to the ones obtained from the application in the previous step
 1. Run `script/setup`
 
-[oauth-app]: https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/
+[oauth-client]: https://develop.battle.net/documentation/guides/using-oauth
 [postgres-download]: https://www.postgresql.org/download/
 
 ## Common Tasks

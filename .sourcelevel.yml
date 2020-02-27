@@ -1,0 +1,25 @@
+styleguide: sourcelevel/linters
+engines:
+  credo:
+    enabled: true
+  csslint:
+    enabled: true
+  fixme:
+    enabled: true
+  eslint:
+    enabled: true
+  remark-lint:
+    enabled: false
+  sass-lint:
+    enabled: true
+  tslint:
+    enabled: true
+    channel: beta
+exclude_paths:
+  - assets/webpack.config.js
+  - config
+  - priv/repo
+  - script
+  - test
+pull_requests:
+  comments: false

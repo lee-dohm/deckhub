@@ -1,0 +1,31 @@
+# This configuration was used SourceLevel to review the lee-dohm/deckhub repository
+# on bf08f502dd78b0f9309968e2dd4ca53b02c5cf70.
+# You can make this the default configuration for future reviews by moving this
+# file to your repository as `.sourcelevel.yml` and pushing it to GitHub, and tweak
+# it as you wish - To know more on how to change this file to better review your
+# repository you can go to https://docs.sourcelevel.io/configuration and see the configuration
+# details.
+---
+styleguide: sourcelevel/linters
+engines:
+  credo:
+    enabled: true
+  csslint:
+    enabled: true
+  fixme:
+    enabled: true
+  eslint:
+    enabled: true
+  sass-lint:
+    enabled: true
+  tslint:
+    enabled: true
+    channel: beta
+exclude_paths:
+  - assets/webpack.config.js
+  - config
+  - priv/repo
+  - script
+  - test
+pull_requests:
+  comments: false
